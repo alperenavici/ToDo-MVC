@@ -1,0 +1,87 @@
+@model TodoAPP.Models.Todo
+
+@{
+    ViewData["Title"] = "Edit Todo";
+}
+
+<main id="todolist">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-12">
+            
+            <div class=" rounded-1 mt-3">
+                
+                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="bi bi-pencil-square"></i> Edit Task
+                    </h4>
+                    <a asp-action="Index" class="btn btn-white text-white" title="Back to List">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                </div>
+
+                <div class="card-body p-4">
+                    <form asp-action="Edit" method="post">
+                        
+                        
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Created" />
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Title" class="form-control" id="Title" placeholder="Title" />
+                            <label for="Title">Title</label>
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+
+                 
+                        <div class="form-floating mb-4 text-white-50">
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter description" style="height: 150px"></textarea>
+                            <label asp-for="Description" class="text-white-50">Description (Optional)</label>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input asp-for="Created" name="Created" type="datetime-local" class="form-control" id="Created" />
+                            <label for="Created">Created</label>
+                            <span asp-validation-for="Created" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="form-check form-switch mb-0">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    asp-for="IsComplete"
+                                    id="IsCompleteSwitch"
+                                >
+                            </div>
+
+                            <label
+                                class="form-check-label mb-0 ms-2"
+                                for="IsCompleteSwitch"
+                            >
+                                Mark as Complete
+                            </label>
+                        </div>
+
+
+                        
+                        <hr />
+
+                 
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-save btn-outline-secondary"></i> Save Changes
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

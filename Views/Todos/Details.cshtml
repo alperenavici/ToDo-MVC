@@ -1,0 +1,41 @@
+@model TodoAPP.Models.Todo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Görev Detayı</h2>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold text-end">Başlık</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+                <dt class="col-sm-3 fw-bold text-end">Açıklama</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-3 fw-bold text-end">Tamamlandı mı?</dt>
+                <dd class="col-sm-9">
+                    @if (Model.IsComplete)
+                    {
+                        <span class="badge bg-success color">Evet</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Hayır</span>
+                    }
+                </dd>
+
+                <dt class="col-sm-3 fw-bold text-end">Oluşturulma</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Created)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">Düzenle</a>
+        <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </div>
+</div>
